@@ -1,0 +1,45 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Stores user progress, level, and common mistakes.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The user's unique ID." },
+        "displayName": { "type": "string", "description": "The user's display name." },
+        "level": { "type": "string", "enum": ["Beginner", "Intermediate", "Advanced"], "description": "The user's English level." },
+        "commonMistakes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "A list of common grammatical or pronunciation mistakes."
+        },
+        "progress": { "type": "number", "description": "A numeric representation of progress (0-100)." },
+        "lastActive": { "type": "string", "format": "date-time", "description": "When the user last used the app." }
+      },
+      "required": ["uid", "level"]
+    },
+    "Message": {
+      "title": "Conversation Message",
+      "description": "A single message in a conversation.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The ID of the user." },
+        "role": { "type": "string", "enum": ["user", "model"], "description": "The role of the message sender." },
+        "text": { "type": "string", "description": "The content of the message." },
+        "timestamp": { "type": "string", "format": "date-time", "description": "When the message was sent." },
+        "correction": { "type": "string", "description": "Optional correction provided by the tutor." }
+      },
+      "required": ["userId", "role", "text", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile and progress data."
+    },
+    "/users/{userId}/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Chat history for the user."
+    }
+  }
+}

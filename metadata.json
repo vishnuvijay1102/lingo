@@ -1,0 +1,5 @@
+{
+  "name": "LingoCoach",
+  "description": "An empathetic AI English Speaking Tutor that helps you improve fluency, pronunciation, and confidence through natural conversation and real-time feedback.",
+  "requestFramePermissions": ["microphone"]
+}
