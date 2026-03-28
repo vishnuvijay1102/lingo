@@ -457,7 +457,7 @@ useEffect(() => {
           </div>
           
           <div className="space-y-2">
-            <h1 className="text-4xl font-bold tracking-tight text-stone-900">LingoCoach verions 1 </h1>
+            <h1 className="text-4xl font-bold tracking-tight text-stone-900">LingoCoach webhook 1 </h1>
             <p className="text-stone-500 text-lg">Your empathetic AI English Speaking Tutor.</p>
           </div>
 
