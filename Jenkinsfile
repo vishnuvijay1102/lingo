@@ -5,16 +5,15 @@ pipeline {
 
         stage('Pull latest code') {
             steps {
-                echo 'Pulling latest code...'
                 dir('/var/www/lingo') {
-                    sh 'git pull origin main'
+                    sh 'git fetch origin main'
+                    sh 'git reset --hard origin/main'
                 }
             }
         }
 
         stage('Build Docker image') {
             steps {
-                echo 'Building...'
                 dir('/var/www/lingo') {
                     sh 'docker compose build --no-cache'
                 }
@@ -23,7 +22,6 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
                 dir('/var/www/lingo') {
                     sh 'docker compose up -d'
                 }
