@@ -23,6 +23,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 dir('/var/www/lingo') {
+                    sh 'docker compose down --remove-orphans'
                     sh 'docker compose up -d'
                 }
             }
